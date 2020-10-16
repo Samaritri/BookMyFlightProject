@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="mockRESTApiForFlights" doc:id="9d37db8c-003b-4370-9823-be556d214b55" >
+		<ee:transform doc:name="FlightsToJSON" doc:id="ce605b37-db46-4e7c-9c0f-f4fdc8ac6cac" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+[
+    {
+      
+      "flightID": "6E447",
+      "source": attributes.queryParams.source,
+      "destination": attributes.queryParams.destination,
+      "departureDateTime": attributes.queryParams.departureDateTime,
+	  "returnDateTime": attributes.queryParams.returnDateTime,
+	  "arrivalDateTime": " 2020-12-07T10:00:00.0Z",
+      "seatsAvailable": 10,
+	  "numberOfTravellers":2,
+      "price": 8000
+    },
+    {
+      
+      "flightID": "6E547",
+      "source": attributes.queryParams.source,
+      "destination": attributes.queryParams.destination,
+      "departureDateTime": attributes.queryParams.departureDateTime,
+	  "returnDateTime": attributes.queryParams.returnDateTime,
+	  "arrivalDateTime": " 2020-12-07T10:00:00.0Z",
+      "seatsAvailable": 10,
+	  "numberOfTravellers":2,
+      "price": 6000
+    },
+    {
+      
+      "flightID": "6E647",
+      "source": attributes.queryParams.destination,
+      "destination": attributes.queryParams.source,
+      "departureDateTime": "2020-12-07T10:00:00.0Z",
+  	  "arrivalDateTime": "2020-12-07T10:00:00.0Z",
+      "seatsAvailable": 10,
+	  "numberOfTravellers":2,
+      "price": 5000
+    },
+    {
+      
+      "flightID": "6E747",
+      "source": attributes.queryParams.destination,
+      "destination": attributes.queryParams.source,
+      "departureDateTime": "2020-12-07T10:00:00.0Z",
+  	  "arrivalDateTime": "2020-12-07T10:00:00.0Z",
+      "seatsAvailable": 10,
+	  "numberOfTravellers":2,
+      "price": 7000
+    }
+    
+    ]]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
