@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="flights_req" format="json">
+      <types:shape format="weave" example="examples/flightsPost.json"><![CDATA[%dw 2.0
+
+type flights_req = {|
+  flightID: String, 
+  numberOfTravellers: Number {"typeId": "int"}, 
+  customerName: String, 
+  customerAge: Number {"typeId": "int"}, 
+  customerGender: String, 
+  customerContact: Number {"typeId": "double"}, 
+  customerEmail: String
+|} {"example": "{\\\"flightID\\\":\\\"6E447\\\",\\\"numberOfTravellers\\\":2,\\\"customerName\\\":\\\"Ryan\\\",\\\"customerAge\\\":22,\\\"customerGender\\\":\\\"M\\\",\\\"customerContact\\\":9977885566,\\\"customerEmail\\\":\\\"ryanB1@gmail.com\\\"}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="flights_resp" format="json">
+      <types:shape format="weave" example="examples/output_flights.json"><![CDATA[%dw 2.0
+
+type flights_resp = {|
+  flightID: String, 
+  source: String, 
+  destination: String, 
+  departureDateTime: String, 
+  seatsAvailable: Number {"typeId": "int"}, 
+  numberOfTravellers: Number {"typeId": "int"}, 
+  price: Number {"typeId": "int"}, 
+  customerName: String, 
+  customerAge: Number {"typeId": "int"}, 
+  customerGender: String, 
+  customerContact: Number {"typeId": "double"}, 
+  customerEmail: String, 
+  bookingID: String, 
+  seatNumber: String, 
+  bookingTimestamp: String
+|} {"example": "{\\\"flightID\\\":\\\"6E447\\\",\\\"source\\\":\\\"PNQ\\\",\\\"destination\\\":\\\"GOA\\\",\\\"departureDateTime\\\":\\\"2020-12-07T10:00:00.0Z\\\",\\\"seatsAvailable\\\":15,\\\"numberOfTravellers\\\":2,\\\"price\\\":4000,\\\"customerName\\\":\\\"Ryan\\\",\\\"customerAge\\\":22,\\\"customerGender\\\":\\\"M\\\",\\\"customerContact\\\":9977885566,\\\"customerEmail\\\":\\\"ryanB1@gmail.com\\\",\\\"bookingID\\\":\\\"FB11\\\",\\\"seatNumber\\\":\\\"3C\\\",\\\"bookingTimestamp\\\":\\\"2020-11-07T11:00:00.0Z\\\"}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#50c1e7ca-5d49-406e-82f6-badc06bdc425">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="flights_req"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="flights_resp"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

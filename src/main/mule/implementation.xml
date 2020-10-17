@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="getFlightsFlow" doc:id="b6aacad1-ba99-4fe5-ae52-a84e095fa29b" >
+		<flow-ref doc:name="Flow Reference" doc:id="71f0363e-1bc7-4fd1-ace3-12dc399e6d94" name="mockRESTApiForFlights"/>
+		<logger level="INFO" doc:name="Logger" doc:id="4c9dd730-2d49-4fa8-88fa-371ea815c1e3" message='"details"'/>
+	</flow>
+	<flow name="postFlightsFlow" doc:id="0cca9037-d9f8-4931-b248-3d94ba5ba35c" >
+		<ee:transform doc:name="Transform Message" doc:id="50c1e7ca-5d49-406e-82f6-badc06bdc425" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	flightID: payload.flightID,
+	numberOfTravellers: payload.numberOfTravellers,
+	customerName: payload.customerName,
+	customerAge: payload.customerAge,
+	customerGender: payload.customerGender,
+	customerContact: payload.customerContact,
+	customerEmail: payload.customerEmail,
+	bookingID: "FB11",
+	seatNumber: "3C",
+	bookingTimestamp: "2020-11-07T11:00:00.0Z"
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="deleteFlightsFlow" doc:id="b3576042-fa5f-431d-b020-1d1ef8321156" >
+		<set-payload value='"Flight booking deleted"' doc:name="Set Payload" doc:id="ad2b195d-e04c-4f45-955a-88b7080d426d" />
+	</flow>
+</mule>

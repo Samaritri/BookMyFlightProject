@@ -1,0 +1,17 @@
+{
+"flightID": "6E447",
+"source": "PNQ",
+"destination": "GOA",
+"departureDateTime": "2020-12-07T10:00:00.0Z",
+"seatsAvailable": 15,
+"numberOfTravellers": 2,
+"price": 4000,
+"customerName": "Ryan",
+"customerAge": 22,
+"customerGender": "M",
+"customerContact": 9977885566,
+"customerEmail": "ryanB1@gmail.com",
+"bookingID": "FB11",
+"seatNumber": "3C",
+"bookingTimestamp": "2020-11-07T11:00:00.0Z"
+}

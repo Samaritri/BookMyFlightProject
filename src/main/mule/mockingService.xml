@@ -13,12 +13,11 @@ output application/json
 [
     {
       
-      "flightID": "6E447",
+      "flightID": "6E44",
       "source": attributes.queryParams.source,
       "destination": attributes.queryParams.destination,
       "departureDateTime": attributes.queryParams.departureDateTime,
-	  "returnDateTime": attributes.queryParams.returnDateTime,
-	  "arrivalDateTime": " 2020-12-07T10:00:00.0Z",
+  	  "arrivalDateTime": " 2020-12-07T10:00:00.0Z",
       "seatsAvailable": 10,
 	  "numberOfTravellers":2,
       "price": 8000
@@ -29,8 +28,7 @@ output application/json
       "source": attributes.queryParams.source,
       "destination": attributes.queryParams.destination,
       "departureDateTime": attributes.queryParams.departureDateTime,
-	  "returnDateTime": attributes.queryParams.returnDateTime,
-	  "arrivalDateTime": " 2020-12-07T10:00:00.0Z",
+  	  "arrivalDateTime": " 2020-12-07T10:00:00.0Z",
       "seatsAvailable": 10,
 	  "numberOfTravellers":2,
       "price": 6000
@@ -38,8 +36,8 @@ output application/json
     {
       
       "flightID": "6E647",
-      "source": attributes.queryParams.destination,
-      "destination": attributes.queryParams.source,
+      "source": attributes.queryParams.source,
+      "destination": attributes.queryParams.destination,
       "departureDateTime": "2020-12-07T10:00:00.0Z",
   	  "arrivalDateTime": "2020-12-07T10:00:00.0Z",
       "seatsAvailable": 10,
@@ -48,9 +46,9 @@ output application/json
     },
     {
       
-      "flightID": "6E747",
-      "source": attributes.queryParams.destination,
-      "destination": attributes.queryParams.source,
+      "flightID": "6E74",
+      "source": attributes.queryParams.source,
+      "destination": attributes.queryParams.destination,
       "departureDateTime": "2020-12-07T10:00:00.0Z",
   	  "arrivalDateTime": "2020-12-07T10:00:00.0Z",
       "seatsAvailable": 10,
